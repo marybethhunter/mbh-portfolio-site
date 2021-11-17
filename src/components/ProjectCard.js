@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   CardBody, CardTitle, CardSubtitle, CardLink,
@@ -35,6 +36,7 @@ export default function ProjectCard({ project, setProjects }) {
         />
         <CardBody>
           <CardLink href={`/details/${project.firebaseKey}`}>Details</CardLink>
+          <Link to={`/edit/project/${project.firebaseKey}`}>Edit Project</Link>
           <button type="button" onClick={() => handleClick('delete')}>
             delete
           </button>

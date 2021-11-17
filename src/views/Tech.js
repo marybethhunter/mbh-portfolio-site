@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAllTechUsed } from '../api/data/portfolioData';
 import TechCard from '../components/TechCard';
@@ -25,6 +26,7 @@ export default function Tech() {
   return (
     <>
       <h2>Tech Used</h2>
+      <Link to="/add-tech">Add New Tech</Link>
       <TechViewStyle>
         {techs.map((tech) => (
           <TechCard key={tech.firebaseKey} tech={tech} setTechs={setTechs} />

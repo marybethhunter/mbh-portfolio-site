@@ -32,10 +32,17 @@ const addNewProject = (obj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateProject = (obj) => new Promise((resolve, reject) => {
+const updateProject = (firebaseKey, obj) => new Promise((resolve, reject) => {
   axios
-    .patch(`${dbUrl}/projects/${obj.firebaseKey}.json`, obj)
+    .patch(`${dbUrl}/projects/${firebaseKey}.json`, obj)
     .then(() => getAllProjects().then(resolve))
+    .catch(reject);
+});
+
+const getSingleProject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/projects/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
     .catch(reject);
 });
 
@@ -47,9 +54,16 @@ const getAboutMe = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateAboutMe = (obj) => new Promise((resolve, reject) => {
+const getSingleAbout = (firebaseKey) => new Promise((resolve, reject) => {
   axios
-    .patch(`${dbUrl}/about/${obj.firebaseKey}.json`, obj)
+    .get(`${dbUrl}/about/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+const updateAboutMe = (firebaseKey, obj) => new Promise((resolve, reject) => {
+  axios
+    .patch(`${dbUrl}/about/${firebaseKey}.json`, obj)
     .then(() => getAboutMe().then(resolve))
     .catch(reject);
 });
@@ -62,10 +76,17 @@ const getContactInfo = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateContactInfo = (obj) => new Promise((resolve, reject) => {
+const updateContactInfo = (firebaseKey, obj) => new Promise((resolve, reject) => {
   axios
-    .patch(`${dbUrl}/contact/${obj.firebaseKey}.json`, obj)
+    .patch(`${dbUrl}/contact/${firebaseKey}.json`, obj)
     .then(() => getContactInfo().then(resolve))
+    .catch(reject);
+});
+
+const getSingleContact = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/contact/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
     .catch(reject);
 });
 
@@ -110,4 +131,7 @@ export {
   getAllTechUsed,
   deleteTech,
   addNewTech,
+  getSingleProject,
+  getSingleAbout,
+  getSingleContact,
 };
