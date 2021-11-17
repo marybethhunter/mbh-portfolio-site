@@ -7,7 +7,7 @@ export default function Routes({ user }) {
   return (
     <>
       {user?.isAdmin && <AdminRoutes user={user} />}
-      <NonadminRoutes />
+      <NonadminRoutes user={user} />
     </>
   );
 }

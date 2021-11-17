@@ -17,8 +17,6 @@ function Initialize() {
           isAdmin: process.env.REACT_APP_ADMIN_UID === authed.uid,
         };
         setUser(userObj);
-      } else if (user || user === null) {
-        setUser(false);
       }
     });
   }, []);

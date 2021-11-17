@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getContactInfo } from '../api/data/portfolioData';
 import ContactCard from '../components/ContactCard';
 
-export default function About() {
+export default function Contact({ user }) {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
@@ -23,9 +24,18 @@ export default function About() {
             key={contact.firebaseKey}
             contact={contact}
             setContacts={setContacts}
+            user={user}
           />
         ))}
       </div>
     </>
   );
 }
+
+Contact.propTypes = {
+  user: PropTypes.shape(PropTypes.obj),
+};
+
+Contact.defaultProps = {
+  user: null,
+};
