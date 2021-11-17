@@ -25,7 +25,7 @@ function Initialize() {
 
   return (
     <>
-      <NavBar user={user} />
+      <NavBar />
       <Routes user={user} />
       <Footer />
     </>

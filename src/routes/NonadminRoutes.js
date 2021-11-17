@@ -16,7 +16,7 @@ export default function NonadminRoutes() {
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/projects" component={Projects} />
         <Route exact path="/tech" component={Tech} />
-        <Route exact path="/details/:key" component={Details} />
+        <Route exact path="/details/:firebaseKey" component={Details} />
       </Switch>
     </div>
   );

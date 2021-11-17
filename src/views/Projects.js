@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getAllProjects } from '../api/data/portfolioData';
 import ProjectCard from '../components/ProjectCard';
@@ -25,6 +26,7 @@ export default function Projects() {
   return (
     <>
       <h2>Projects</h2>
+      <Link to="/addproject">Add Project</Link>
       <ProjectViewStyle>
         {projects.map((project) => (
           <ProjectCard
