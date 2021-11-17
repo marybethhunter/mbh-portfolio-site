@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { getSingleAbout } from '../api/data/portfolioData';
 import AboutCardForm from '../components/forms/AboutCardForm';
+import { signOutUser } from '../api/auth';
 
-export default function AdminEditAbout() {
+const ButtonStyle = styled.button`
+  margin-top: 40px;
+  color: white;
+  background-color: orange;
+`;
+export default function AdminEditAbout({ user }) {
   const [editAbout, setEditAbout] = useState({});
   const { fbKey } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     let isMounted = true;
@@ -19,7 +28,25 @@ export default function AdminEditAbout() {
 
   return (
     <>
-      <AboutCardForm obj={editAbout} />
+      <AboutCardForm obj={editAbout} user={user} />
+      <ButtonStyle
+        type="button"
+        onClick={() => {
+          signOutUser().then(() => {
+            history.push('/');
+          });
+        }}
+      >
+        Sign Out
+      </ButtonStyle>
     </>
   );
 }
+
+AdminEditAbout.propTypes = {
+  user: PropTypes.shape(PropTypes.obj),
+};
+
+AdminEditAbout.defaultProps = {
+  user: null,
+};

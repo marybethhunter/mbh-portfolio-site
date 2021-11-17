@@ -23,7 +23,7 @@ const DivStyle = styled.div`
   justify-content: center;
 `;
 
-export default function AboutCard({ about, setAbouts }) {
+export default function AboutCard({ about, setAbouts, user }) {
   useEffect(() => {
     let isMounted = true;
     getAboutMe().then((aboutArray) => {
@@ -40,7 +40,9 @@ export default function AboutCard({ about, setAbouts }) {
       <AboutStyle>
         <CardBody>
           <CardBody>
-            <Link to={`/editabout/${about.firebaseKey}`}>Edit About Me</Link>
+            {user?.isAdmin && (
+              <Link to={`/editabout/${about.firebaseKey}`}>Edit About Me</Link>
+            )}
           </CardBody>
           <CardTitle tag="h5">About Me</CardTitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -59,4 +61,9 @@ AboutCard.propTypes = {
     firebaseKey: PropTypes.string,
   }).isRequired,
   setAbouts: PropTypes.func.isRequired,
+  user: PropTypes.shape(PropTypes.obj),
+};
+
+AboutCard.defaultProps = {
+  user: null,
 };

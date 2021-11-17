@@ -13,7 +13,7 @@ const ContactStyle = styled.div`
   margin: 10px;
 `;
 
-export default function ContactCard({ contact, setContacts }) {
+export default function ContactCard({ contact, setContacts, user }) {
   useEffect(() => {
     let isMounted = true;
     getContactInfo().then((contactArray) => {
@@ -26,7 +26,11 @@ export default function ContactCard({ contact, setContacts }) {
 
   return (
     <div>
-      <Link to={`/edit/contact/${contact.firebaseKey}`}>Edit Contact Info</Link>
+      {user?.isAdmin && (
+        <Link to={`/edit/contact/${contact.firebaseKey}`}>
+          Edit Contact Info
+        </Link>
+      )}
       <ContactStyle>
         <CardBody>
           <CardTitle tag="h5">Contact Me</CardTitle>
@@ -65,4 +69,9 @@ ContactCard.propTypes = {
     phone: PropTypes.string,
   }).isRequired,
   setContacts: PropTypes.func.isRequired,
+  user: PropTypes.shape(PropTypes.obj),
+};
+
+ContactCard.defaultProps = {
+  user: null,
 };

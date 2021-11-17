@@ -13,7 +13,7 @@ const CardStyle = styled.div`
   margin: 10px;
 `;
 
-export default function ProjectCard({ project, setProjects }) {
+export default function ProjectCard({ project, setProjects, user }) {
   const handleClick = (method) => {
     if (method === 'delete') {
       deleteProject(project.firebaseKey).then((projArray) => setProjects(projArray));
@@ -36,10 +36,16 @@ export default function ProjectCard({ project, setProjects }) {
         />
         <CardBody>
           <CardLink href={`/details/${project.firebaseKey}`}>Details</CardLink>
-          <Link to={`/edit/project/${project.firebaseKey}`}>Edit Project</Link>
-          <button type="button" onClick={() => handleClick('delete')}>
-            delete
-          </button>
+          {user?.isAdmin && (
+            <Link to={`/edit/project/${project.firebaseKey}`}>
+              Edit Project
+            </Link>
+          )}
+          {user?.isAdmin && (
+            <button type="button" onClick={() => handleClick('delete')}>
+              delete
+            </button>
+          )}
         </CardBody>
       </CardStyle>
     </div>
@@ -56,4 +62,9 @@ ProjectCard.propTypes = {
     repoLink: PropTypes.string,
   }).isRequired,
   setProjects: PropTypes.func.isRequired,
+  user: PropTypes.shape(PropTypes.obj),
+};
+
+ProjectCard.defaultProps = {
+  user: null,
 };
