@@ -2,15 +2,36 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  CardBody, CardTitle, CardSubtitle, CardLink,
-} from 'reactstrap';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { getContactInfo } from '../api/data/portfolioData';
 
-const ContactStyle = styled.div`
-  width: 300px;
-  height: 400px;
-  margin: 10px;
+const DivStyle = styled.div`
+  display: flex;
+  flex-wrap: flex-wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+`;
+
+const CardStyle = styled(Card)`
+  display: flex;
+  flex-wrap: flex-wrap;
+  justify-content: center;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
+`;
+const TextStyle = styled(Typography)`
+  margin-bottom: 30px;
+`;
+
+const ButtonStyle = styled(Button)`
+  margin-right: 10px;
 `;
 
 export default function ContactCard({ contact, setContacts, user }) {
@@ -31,30 +52,51 @@ export default function ContactCard({ contact, setContacts, user }) {
           Edit Contact Info
         </Link>
       )}
-      <ContactStyle>
-        <CardBody>
-          <CardTitle tag="h5">Contact Me</CardTitle>
-          <CardSubtitle className="mb-2" tag="h6">
-            {contact.name}
-          </CardSubtitle>
-          <CardSubtitle>
-            <CardLink href={contact.github} target="_blank">
-              Check out my Github!
-            </CardLink>
-          </CardSubtitle>
-          <CardSubtitle>
-            <CardLink href={contact.linkedIn} target="_blank">
-              Connect with me on LinkedIn!
-            </CardLink>
-          </CardSubtitle>
-          <CardSubtitle className="mb-2" tag="h6">
-            {contact.email}
-          </CardSubtitle>
-          <CardSubtitle className="mb-2" tag="h6">
-            {contact.phone}
-          </CardSubtitle>
-        </CardBody>
-      </ContactStyle>
+      <DivStyle>
+        <CardStyle
+          sx={{
+            height: 'auto',
+            width: 'auto',
+            maxHeight: { xs: 800, md: 1050 },
+            maxWidth: { xs: 1280, md: 1680 },
+          }}
+          style={{ backgroundColor: '#6B01FD' }}
+        >
+          <CardContent>
+            <Typography gutterBottom variant="h1" component="div">
+              Contact Me!
+            </Typography>
+            <Typography gutterBottom variant="h4" component="div">
+              {contact.name}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="body1"
+              component="div"
+              href="tel:+1-662-687-3547"
+            >
+              <PhoneIcon style={{ color: '#ffffff' }} /> {contact.phone}
+            </Typography>
+            <TextStyle gutterBottom variant="body1" component="div">
+              <EmailIcon style={{ color: '#ffffff' }} /> {contact.email}
+            </TextStyle>
+            <ButtonStyle
+              style={{ color: '#ffffff' }}
+              href={contact.github}
+              target="_blank"
+            >
+              <GitHubIcon style={{ color: '#ffffff' }} /> Github
+            </ButtonStyle>
+            <Button
+              style={{ color: '#ffffff' }}
+              href={contact.linkedIn}
+              target="_blank"
+            >
+              <LinkedInIcon style={{ color: '#ffffff' }} /> LinkedIn
+            </Button>
+          </CardContent>
+        </CardStyle>
+      </DivStyle>
     </div>
   );
 }

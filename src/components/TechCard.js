@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardBody } from 'reactstrap';
 import styled from 'styled-components';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
+// import Button from '@mui/material/Button';
 import { deleteTech } from '../api/data/portfolioData';
 
-const CardStyle = styled.div`
-  width: 300px;
-  height: 400px;
-  margin: 10px;
+const CardStyle = styled(Card)`
+  margin-top: 10px;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
 `;
 
 export default function TechCard({ tech, setTechs, user }) {
@@ -19,15 +21,24 @@ export default function TechCard({ tech, setTechs, user }) {
 
   return (
     <div>
-      <CardStyle>
-        <img alt="logo of tech" src={tech.logo} width="100%" />
-        <CardBody>
+      <CardStyle sx={{ maxWidth: 400, maxHeight: 500 }}>
+        <CardMedia
+          component="img"
+          // height="200"
+          image={tech.logo}
+          alt="logo of tech"
+        />
+        <CardActions>
           {user?.isAdmin && (
-            <button type="button" onClick={() => handleClick('delete')}>
+            <button
+              color="#160033"
+              type="button"
+              onClick={() => handleClick('delete')}
+            >
               delete
             </button>
           )}
-        </CardBody>
+        </CardActions>
       </CardStyle>
     </div>
   );

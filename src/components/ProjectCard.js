@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  CardBody, CardTitle, CardSubtitle, CardLink,
-} from 'reactstrap';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import { deleteProject } from '../api/data/portfolioData';
 
-const CardStyle = styled.div`
-  width: 300px;
-  height: 400px;
-  margin: 10px;
+const DivStyle = styled.div`
+  padding: 5px;
+`;
+
+const CardStyle = styled(Card)`
+  border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
+  text-align: center;
+  align-items: center;
 `;
 
 export default function ProjectCard({ project, setProjects, user }) {
@@ -21,34 +29,41 @@ export default function ProjectCard({ project, setProjects, user }) {
   };
 
   return (
-    <div>
-      <CardStyle>
-        <CardBody>
-          <CardTitle tag="h5">{project.projectName}</CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Card subtitle
-          </CardSubtitle>
-        </CardBody>
-        <img
-          alt={project.projectName}
-          src={project.projectImage}
-          width="100%"
-        />
-        <CardBody>
-          <CardLink href={`/details/${project.firebaseKey}`}>Details</CardLink>
+    <DivStyle>
+      <CardStyle color="primary" style={{ backgroundColor: '#6B01FD' }}>
+        <CardContent>
+          <Typography color="#ffffff" gutterBottom variant="h5" component="div">
+            {project.projectName}
+          </Typography>
+        </CardContent>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <Button
+            style={{ color: '#ffffff' }}
+            size="small"
+            href={`/details/${project.firebaseKey}`}
+          >
+            <DoubleArrowIcon style={{ color: '#ffffff' }} /> Project Details
+          </Button>
           {user?.isAdmin && (
-            <Link to={`/edit/project/${project.firebaseKey}`}>
+            <Button
+              style={{ color: '#ffffff' }}
+              href={`/edit/project/${project.firebaseKey}`}
+            >
               Edit Project
-            </Link>
+            </Button>
           )}
           {user?.isAdmin && (
-            <button type="button" onClick={() => handleClick('delete')}>
+            <Button
+              style={{ color: '#ffffff' }}
+              type="button"
+              onClick={() => handleClick('delete')}
+            >
               delete
-            </button>
+            </Button>
           )}
-        </CardBody>
+        </CardActions>
       </CardStyle>
-    </div>
+    </DivStyle>
   );
 }
 
