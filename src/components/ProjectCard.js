@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  CardBody, CardTitle, CardSubtitle, CardLink,
-} from 'reactstrap';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import { deleteProject } from '../api/data/portfolioData';
 
-const CardStyle = styled.div`
-  width: 300px;
-  height: 400px;
-  margin: 10px;
+const DivStyle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CardStyle = styled(Card)`
+  margin: 5px;
+  border-radius: 5px;
 `;
 
 export default function ProjectCard({ project, setProjects, user }) {
@@ -21,34 +29,48 @@ export default function ProjectCard({ project, setProjects, user }) {
   };
 
   return (
-    <div>
-      <CardStyle>
-        <CardBody>
-          <CardTitle tag="h5">{project.projectName}</CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Card subtitle
-          </CardSubtitle>
-        </CardBody>
-        <img
+    <DivStyle>
+      <CardStyle color="primary" style={{ backgroundColor: '#AC92A6' }}>
+        <CardMedia
+          component="img"
+          height="150"
+          width="175"
+          image={project.projectImage}
           alt={project.projectName}
-          src={project.projectImage}
-          width="100%"
         />
-        <CardBody>
-          <CardLink href={`/details/${project.firebaseKey}`}>Details</CardLink>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {project.projectName}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            style={{ color: '#ffffff' }}
+            size="small"
+            href={`/details/${project.firebaseKey}`}
+          >
+            Project Details
+          </Button>
           {user?.isAdmin && (
-            <Link to={`/edit/project/${project.firebaseKey}`}>
+            <Button
+              style={{ color: '#ffffff' }}
+              href={`/edit/project/${project.firebaseKey}`}
+            >
               Edit Project
-            </Link>
+            </Button>
           )}
           {user?.isAdmin && (
-            <button type="button" onClick={() => handleClick('delete')}>
+            <Button
+              style={{ color: '#ffffff' }}
+              type="button"
+              onClick={() => handleClick('delete')}
+            >
               delete
-            </button>
+            </Button>
           )}
-        </CardBody>
+        </CardActions>
       </CardStyle>
-    </div>
+    </DivStyle>
   );
 }
 

@@ -26,7 +26,6 @@ export default function Tech({ user }) {
 
   return (
     <>
-      <h2>Tech Used</h2>
       {user?.isAdmin && <Link to="/add-tech">Add New Tech</Link>}
       <TechViewStyle>
         {techs.map((tech) => (

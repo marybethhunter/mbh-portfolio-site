@@ -9,6 +9,12 @@ const ProjectViewStyle = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
+  background-color: #fffcf2;
+  margin-top: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 5px;
 `;
 
 export default function Projects({ user }) {
@@ -26,7 +32,6 @@ export default function Projects({ user }) {
 
   return (
     <>
-      <h2>Projects</h2>
       {user?.isAdmin && <Link to="/addproject">Add Project</Link>}
       <ProjectViewStyle>
         {projects.map((project) => (
