@@ -5,19 +5,27 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 
 const ButtonStyle = styled(Button)`
-  color: white;
-  margin-left: 10px;
+  color: #160033;
+  margin-left: 5px;
 `;
+
+const NavStyle = styled(AppBar)`
+  background-color: #ffffff;
+`;
+
+// const TypographyStyle = styled(Typography)`
+//   color: #160033;
+// `;
 
 export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <NavStyle position="static">
         <Toolbar>
-          <Typography variant="h5">Mary Beth Hunter</Typography>
+          {/* <TypographyStyle variant="h5">Mary Beth Hunter</TypographyStyle> */}
           <div>
             <ButtonStyle href="/">Home</ButtonStyle>
             <ButtonStyle href="/about">About</ButtonStyle>
@@ -26,7 +34,7 @@ export default function NavBar() {
             <ButtonStyle href="/projects">Projects</ButtonStyle>
           </div>
         </Toolbar>
-      </AppBar>
+      </NavStyle>
     </Box>
   );
 }

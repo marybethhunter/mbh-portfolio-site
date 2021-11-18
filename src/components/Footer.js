@@ -16,6 +16,7 @@ const NavbarStyle = styled(Navbar)`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  height: 24px;
 `;
 
 export default function Footer() {

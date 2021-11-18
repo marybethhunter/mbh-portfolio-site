@@ -8,6 +8,7 @@ import { updateAboutMe } from '../../api/data/portfolioData';
 
 const initialState = {
   bio: '',
+  bio2: '',
   image: '',
 };
 
@@ -19,6 +20,7 @@ export default function AboutCardForm({ obj = {} }) {
     if (obj.firebaseKey) {
       setFormInput({
         bio: obj.bio,
+        bio2: obj.bio2,
         image: obj.image,
       });
       // console.warn(obj);
@@ -56,6 +58,16 @@ export default function AboutCardForm({ obj = {} }) {
           />
         </FormGroup>
         <FormGroup>
+          <Label for="bio2">Bio 2:</Label>
+          <Input
+            onChange={(e) => handleChange(e)}
+            value={formInput.bio2 || ''}
+            type="text"
+            name="bio2"
+            id="bio2"
+          />
+        </FormGroup>
+        <FormGroup>
           <Label for="image">Image Link:</Label>
           <Input
             onChange={(e) => handleChange(e)}
@@ -74,6 +86,7 @@ export default function AboutCardForm({ obj = {} }) {
 AboutCardForm.propTypes = {
   obj: PropTypes.shape({
     bio: '',
+    bio2: '',
     image: '',
     firebaseKey: '',
   }),

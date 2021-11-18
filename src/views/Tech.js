@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Masonry from 'react-smart-masonry';
 import { getAllTechUsed } from '../api/data/portfolioData';
 import TechCard from '../components/TechCard';
 
-const TechViewStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+const DivStyle = styled.div`
+  margin-top: 5px;
 `;
 
 export default function Tech({ user }) {
@@ -25,9 +24,9 @@ export default function Tech({ user }) {
   }, []);
 
   return (
-    <>
+    <DivStyle style={{ backgroundColor: '#ffffff' }}>
       {user?.isAdmin && <Link to="/add-tech">Add New Tech</Link>}
-      <TechViewStyle>
+      <Masonry columns={4} gap={50}>
         {techs.map((tech) => (
           <TechCard
             key={tech.firebaseKey}
@@ -36,8 +35,8 @@ export default function Tech({ user }) {
             user={user}
           />
         ))}
-      </TechViewStyle>
-    </>
+      </Masonry>
+    </DivStyle>
   );
 }
 

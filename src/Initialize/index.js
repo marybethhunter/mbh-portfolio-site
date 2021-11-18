@@ -9,16 +9,14 @@ import Footer from '../components/Footer';
 const theme = createTheme({
   palette: {
     primary: {
-      light: '#dec2d7',
-      main: '#AC92A6',
-      dark: '#7d6477',
-      contrastText: '#403D39',
+      light: '#645B78',
+      main: '#6B01FD',
+      dark: '#160033',
+      contrastText: '#ffffff',
     },
     secondary: {
-      light: '#ffffff',
-      main: '#fffcf2',
-      dark: '#ccc9bf',
-      contrastText: '#252422',
+      main: '#49FDB1',
+      contrastText: '#ffffff',
     },
   },
   typography: {
@@ -28,7 +26,7 @@ const theme = createTheme({
   },
   Card: {
     allVariants: {
-      color: '#ccc9bf',
+      color: '#ffffff',
     },
   },
 });

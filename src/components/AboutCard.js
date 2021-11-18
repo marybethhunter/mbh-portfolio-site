@@ -12,18 +12,23 @@ const DivStyle = styled.div`
   display: flex;
   flex-wrap: flex-wrap;
   justify-content: center;
-  background-color: #fffcf2;
-  margin-top: 55px;
+  min-height: 80vh;
+  margin-top: 30px;
   border-radius: 5px;
 `;
 
 const CardStyle = styled(Card)`
-  margin: 60px 5px;
+  margin: 60px 20px;
   border-radius: 5px;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
 `;
 
 const ImgStyle = styled(CardMedia)`
   border-radius: 5px;
+`;
+
+const TypographyStyle = styled(Typography)`
+  margin-top: 30px;
 `;
 
 export default function AboutCard({ about, setAbouts, user }) {
@@ -55,25 +60,33 @@ export default function AboutCard({ about, setAbouts, user }) {
         <CardStyle
           sx={{ maxWidth: 700 }}
           height="400"
-          style={{ backgroundColor: '#AC92A6' }}
+          style={{ backgroundColor: '#6B01FD' }}
         >
           <CardContent>
             <Typography
               style={{ color: '#fffcf2' }}
               gutterBottom
-              variant="h6"
+              variant="h4"
               component="div"
             >
-              About Me
+              About Me!
             </Typography>
-            <Typography
+            <TypographyStyle
               style={{ color: '#fffcf2' }}
               gutterBottom
-              variant="subtitle1"
+              variant="body1"
               component="div"
             >
               {about.bio}
-            </Typography>
+            </TypographyStyle>
+            <TypographyStyle
+              style={{ color: '#fffcf2' }}
+              gutterBottom
+              variant="body1"
+              component="div"
+            >
+              {about.bio2}
+            </TypographyStyle>
           </CardContent>
         </CardStyle>
       </DivStyle>
@@ -84,6 +97,7 @@ export default function AboutCard({ about, setAbouts, user }) {
 AboutCard.propTypes = {
   about: PropTypes.shape({
     bio: PropTypes.string,
+    bio2: PropTypes.string,
     image: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,

@@ -5,6 +5,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
@@ -14,17 +16,17 @@ const DivStyle = styled(Container)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fffcf2;
-  margin-top: 6px;
+  // background-color: #6B01FD;
+  margin-top: 4px;
   border-radius: 5px;
-  min-height: 100vh;
+  min-height: 90vh;
 `;
 
 const CardStyle = styled(Card)`
-  margin: 60px 5px;
+  margin: 20px 5px;
   border-radius: 5px;
-  box-shadow: 12px 12px 2px 1px #ac92a6;
-  border: 1px solid #ac92a6;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
+  // border: 2px solid #160033;
 `;
 
 const ImgStyle = styled(CardMedia)`
@@ -51,17 +53,17 @@ export default function Details() {
         <DivStyle maxWidth="lg">
           <CardStyle
             sx={{ maxWidth: 700 }}
-            style={{ backgroundColor: '#fffcf2' }}
+            style={{ backgroundColor: '#6B01FD' }}
           >
             <ImgStyle
               component="img"
-              height="300"
+              height="325"
               image={project.projectImage}
               alt={project.projectName}
             />
             <CardContent>
               <Typography
-                style={{ color: '#AC92A6' }}
+                style={{ color: '#ffffff' }}
                 gutterBottom
                 variant="h5"
                 component="div"
@@ -69,24 +71,28 @@ export default function Details() {
                 {project.projectName}
               </Typography>
               <Typography
-                style={{ color: '#AC92A6' }}
+                style={{ color: '#ffffff' }}
                 gutterBottom
-                variant="h5"
+                variant="body1"
                 component="div"
               >
                 {project.projectDescription}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button color="primary" href={project.repoLink} target="_blank">
-                Github
+              <Button
+                style={{ color: '#ffffff' }}
+                href={project.repoLink}
+                target="_blank"
+              >
+                <GitHubIcon style={{ color: '#ffffff' }} /> Github
               </Button>
               <Button
-                color="primary"
+                style={{ color: '#ffffff' }}
                 href={project.deployedLink}
                 target="_blank"
               >
-                Deployed Site
+                <LanguageIcon style={{ color: '#ffffff' }} /> Deployed Site
               </Button>
             </CardActions>
           </CardStyle>

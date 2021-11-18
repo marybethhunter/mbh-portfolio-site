@@ -6,6 +6,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { getContactInfo } from '../api/data/portfolioData';
 
 const DivStyle = styled.div`
@@ -13,16 +17,21 @@ const DivStyle = styled.div`
   flex-wrap: flex-wrap;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
 `;
 
 const CardStyle = styled(Card)`
   display: flex;
   flex-wrap: flex-wrap;
   justify-content: center;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
 `;
 const TextStyle = styled(Typography)`
   margin-bottom: 30px;
+`;
+
+const ButtonStyle = styled(Button)`
+  margin-right: 10px;
 `;
 
 export default function ContactCard({ contact, setContacts, user }) {
@@ -44,33 +53,46 @@ export default function ContactCard({ contact, setContacts, user }) {
         </Link>
       )}
       <DivStyle>
-        <CardStyle style={{ backgroundColor: '#AC92A6' }}>
+        <CardStyle
+          sx={{
+            height: 'auto',
+            width: 'auto',
+            maxHeight: { xs: 800, md: 1050 },
+            maxWidth: { xs: 1280, md: 1680 },
+          }}
+          style={{ backgroundColor: '#6B01FD' }}
+        >
           <CardContent>
-            <Typography gutterBottom variant="h3" component="div">
+            <Typography gutterBottom variant="h1" component="div">
               Contact Me!
             </Typography>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h4" component="div">
               {contact.name}
             </Typography>
-            <Typography gutterBottom variant="subtitle1" component="div">
-              {contact.phone}
+            <Typography
+              gutterBottom
+              variant="body1"
+              component="div"
+              href="tel:+1-662-687-3547"
+            >
+              <PhoneIcon style={{ color: '#ffffff' }} /> {contact.phone}
             </Typography>
-            <TextStyle gutterBottom variant="subtitle1" component="div">
-              {contact.email}
+            <TextStyle gutterBottom variant="body1" component="div">
+              <EmailIcon style={{ color: '#ffffff' }} /> {contact.email}
             </TextStyle>
-            <Button
+            <ButtonStyle
               style={{ color: '#ffffff' }}
               href={contact.github}
               target="_blank"
             >
-              Github
-            </Button>
+              <GitHubIcon style={{ color: '#ffffff' }} /> Github
+            </ButtonStyle>
             <Button
               style={{ color: '#ffffff' }}
               href={contact.linkedIn}
               target="_blank"
             >
-              LinkedIn
+              <LinkedInIcon style={{ color: '#ffffff' }} /> LinkedIn
             </Button>
           </CardContent>
         </CardStyle>

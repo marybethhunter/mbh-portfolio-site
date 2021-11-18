@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import { deleteProject } from '../api/data/portfolioData';
 
 const DivStyle = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  padding: 5px;
 `;
 
 const CardStyle = styled(Card)`
-  margin: 5px;
   border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 12px 12px 2px 1px #49fdb1;
+  text-align: center;
+  align-items: center;
 `;
 
 export default function ProjectCard({ project, setProjects, user }) {
@@ -30,26 +30,19 @@ export default function ProjectCard({ project, setProjects, user }) {
 
   return (
     <DivStyle>
-      <CardStyle color="primary" style={{ backgroundColor: '#AC92A6' }}>
-        <CardMedia
-          component="img"
-          height="150"
-          width="175"
-          image={project.projectImage}
-          alt={project.projectName}
-        />
+      <CardStyle color="primary" style={{ backgroundColor: '#6B01FD' }}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography color="#ffffff" gutterBottom variant="h5" component="div">
             {project.projectName}
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions style={{ justifyContent: 'center' }}>
           <Button
             style={{ color: '#ffffff' }}
             size="small"
             href={`/details/${project.firebaseKey}`}
           >
-            Project Details
+            <DoubleArrowIcon style={{ color: '#ffffff' }} /> Project Details
           </Button>
           {user?.isAdmin && (
             <Button
