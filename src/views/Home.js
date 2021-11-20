@@ -44,7 +44,7 @@ export default function Home() {
         style={{
           boxShadow: '0 0 40px 20px #49FDB1',
           clipPath: 'inset(-15px -45px -15px -45px)',
-          marginTop: '20px',
+          marginTop: '18px',
           marginBottom: '8px',
         }}
       />

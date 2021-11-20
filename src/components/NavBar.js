@@ -14,6 +14,7 @@ const ButtonStyle = styled(Button)`
 const NavStyle = styled(AppBar)`
   background-color: #ffffff;
   margin-bottom: 3px;
+  align-items: center;
 `;
 
 export default function NavBar() {
