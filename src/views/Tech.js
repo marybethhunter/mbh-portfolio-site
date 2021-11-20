@@ -7,6 +7,8 @@ import { getAllTechUsed } from '../api/data/portfolioData';
 import TechCard from '../components/TechCard';
 
 const DivStyle = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: 5px;
 `;
 
@@ -24,9 +26,9 @@ export default function Tech({ user }) {
   }, []);
 
   return (
-    <DivStyle style={{ backgroundColor: '#ffffff' }}>
+    <DivStyle style={{ backgroundColor: '#ffffff' }} className="tech-div">
       {user?.isAdmin && <Link to="/add-tech">Add New Tech</Link>}
-      <Masonry columns={4} gap={50}>
+      <Masonry columns={3} gap={35}>
         {techs.map((tech) => (
           <TechCard
             key={tech.firebaseKey}

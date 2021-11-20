@@ -14,15 +14,13 @@ import { getContactInfo } from '../api/data/portfolioData';
 
 const DivStyle = styled.div`
   display: flex;
-  flex-wrap: flex-wrap;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 90vh;
 `;
 
 const CardStyle = styled(Card)`
   display: flex;
-  flex-wrap: flex-wrap;
   justify-content: center;
   box-shadow: 12px 12px 2px 1px #49fdb1;
 `;

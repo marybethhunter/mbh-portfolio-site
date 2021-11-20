@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { getContactInfo } from '../api/data/portfolioData';
 import ContactCard from '../components/ContactCard';
 
+const DivStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+`;
 export default function Contact({ user }) {
   const [contacts, setContacts] = useState([]);
 
@@ -18,7 +24,7 @@ export default function Contact({ user }) {
 
   return (
     <>
-      <div>
+      <DivStyle>
         {contacts.map((contact) => (
           <ContactCard
             key={contact.firebaseKey}
@@ -27,7 +33,7 @@ export default function Contact({ user }) {
             user={user}
           />
         ))}
-      </div>
+      </DivStyle>
     </>
   );
 }

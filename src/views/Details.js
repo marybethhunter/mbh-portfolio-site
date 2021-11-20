@@ -52,7 +52,16 @@ export default function Details() {
       <DivStyle>
         <DivStyle maxWidth="lg">
           <CardStyle
-            sx={{ maxWidth: 700 }}
+            // sx={{
+            //   height: 'auto',
+            //   width: 'auto',
+            //   maxHeight: {
+            //     xs: 300, sm: 600, md: 900, lg: 1200, xl: 1536,
+            //   },
+            //   maxWidth: {
+            //     xs: 350, sm: 600, md: 900, lg: 1200, xl: 1536,
+            //   },
+            // }}
             style={{ backgroundColor: '#6B01FD' }}
           >
             <ImgStyle
@@ -65,7 +74,7 @@ export default function Details() {
               <Typography
                 style={{ color: '#ffffff' }}
                 gutterBottom
-                variant="h5"
+                variant="h4"
                 component="div"
               >
                 {project.projectName}
