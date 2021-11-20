@@ -15,14 +15,34 @@ const NavbarStyle = styled(Navbar)`
   background-color: #ac92a6;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  height: 24px;
+  bottom: 0;
 `;
 
 export default function Footer() {
   return (
     <DivStyle>
-      <NavbarStyle className="footer" expand="md" fixed="bottom" light>
+      <NavbarStyle
+        sx={{
+          height: 'auto',
+          width: 'auto',
+          maxHeight: {
+            xs: 300,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+          },
+          maxWidth: {
+            xs: 350,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+          },
+        }}
+        className="footer"
+        light
+      >
         <NavLink className="footer-text" onClick={signInUser}>
           Copyright © Mary Beth Hunter 2021
         </NavLink>

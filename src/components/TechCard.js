@@ -21,7 +21,7 @@ export default function TechCard({ tech, setTechs, user }) {
 
   return (
     <div>
-      <CardStyle sx={{ maxWidth: 400, maxHeight: 500 }}>
+      <CardStyle sx={{ maxWidth: 400, maxHeight: 500 }} className="tech-card">
         <CardMedia
           component="img"
           // height="200"

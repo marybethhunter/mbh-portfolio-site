@@ -13,7 +13,6 @@ const DivStyle = styled.div`
   flex-wrap: flex-wrap;
   justify-content: center;
   min-height: 80vh;
-  margin-top: 30px;
   border-radius: 5px;
 `;
 
@@ -44,20 +43,12 @@ export default function AboutCard({ about, setAbouts, user }) {
 
   return (
     <>
-      <DivStyle maxWidth="sm">
+      <DivStyle maxWidth="sm" className="about-div">
         {user?.isAdmin && (
           <Link to={`/editabout/${about.firebaseKey}`}>Edit About Me</Link>
         )}
-        <CardStyle sx={{ maxWidth: 400 }}>
-          <ImgStyle
-            component="img"
-            height="500"
-            width="300"
-            image={about.image}
-            alt="Mary Beth Hunter"
-          />
-        </CardStyle>
         <CardStyle
+          className="about-card-div"
           sx={{ maxWidth: 700 }}
           height="400"
           style={{ backgroundColor: '#6B01FD' }}
@@ -88,6 +79,17 @@ export default function AboutCard({ about, setAbouts, user }) {
               {about.bio2}
             </TypographyStyle>
           </CardContent>
+        </CardStyle>
+        <CardStyle sx={{ maxWidth: 400 }} className="about-card-div">
+          <ImgStyle
+            component="img"
+            height="600"
+            width="300"
+            image={about.image}
+            alt="Mary Beth Hunter"
+            style={{ padding: 0 }}
+            className="about-img-div"
+          />
         </CardStyle>
       </DivStyle>
     </>

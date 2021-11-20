@@ -15,7 +15,6 @@ const DivStyle = styled.div`
 
 const CardStyle = styled(Card)`
   border-radius: 5px;
-  margin-top: 30px;
   box-shadow: 12px 12px 2px 1px #49fdb1;
   text-align: center;
   align-items: center;
@@ -29,10 +28,14 @@ export default function ProjectCard({ project, setProjects, user }) {
   };
 
   return (
-    <DivStyle>
-      <CardStyle color="primary" style={{ backgroundColor: '#6B01FD' }}>
+    <DivStyle className="project-div">
+      <CardStyle
+        color="primary"
+        style={{ backgroundColor: '#6B01FD' }}
+        className="project-card-div"
+      >
         <CardContent>
-          <Typography color="#ffffff" gutterBottom variant="h5" component="div">
+          <Typography color="#ffffff" gutterBottom variant="h4" component="div">
             {project.projectName}
           </Typography>
         </CardContent>

@@ -8,6 +8,9 @@ import ProjectCard from '../components/ProjectCard';
 
 const DivStyle = styled.div`
   margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
 `;
 export default function Projects({ user }) {
   const [projects, setProjects] = useState([]);
@@ -25,7 +28,7 @@ export default function Projects({ user }) {
   return (
     <DivStyle>
       {user?.isAdmin && <Link to="/addproject">Add Project</Link>}
-      <Masonry columns={3} gap={25}>
+      <Masonry columns={2} gap={18}>
         {projects.map((project) => (
           <ProjectCard
             key={project.firebaseKey}
