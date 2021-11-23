@@ -28,6 +28,23 @@ body {
    color: #ffffff !important;
  }
 
+ .fade-enter {
+  opacity: 0;
+  z-index: 1;
+  transition-delay: 1s;
+}
+
+.fade-exit {
+  opacity: 0;
+  z-index: 1;
+  transition-duration: 0s;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: transform 50ms ease-in;
+}
+
  /* small phones */
 @media only screen and (max-width: 600px) {
   .home-div {
@@ -88,20 +105,15 @@ body {
 @media only screen and (min-width:600px) {
   .about-div {
     width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
-    margin-bottom: 15px;
   }
 
   .about-card-div {
-    margin: 15px 3px;
+    margin: 60px 20px;
+    height: 500px;
   }
 
   .about-img-div {
-    height: auto;
+    height: 500px;
   }
 
   .tech-div {

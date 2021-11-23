@@ -8,6 +8,7 @@ import ProjectCard from '../components/ProjectCard';
 
 const DivStyle = styled.div`
   margin-top: 5px;
+  margin: 5px;
   display: flex;
   justify-content: center;
   min-height: 90vh;
