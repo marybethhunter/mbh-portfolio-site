@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Route, Switch, Redirect, useLocation,
-} from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import AdminAddEditProject from '../views/AdminAddEditProject';
 import AdminEditAbout from '../views/AdminEditAbout';
 import AdminEditContact from '../views/AdminEditContact';
@@ -33,46 +30,40 @@ PrivateRoute.defaultProps = {
 };
 
 export default function AdminRoutes({ user }) {
-  const location = useLocation();
-
   return (
     <>
-      <TransitionGroup>
-        <CSSTransition timeout={50} classNames="fade" key={location.key}>
-          <Switch location={location}>
-            <PrivateRoute
-              exact
-              path="/edit/project/:projKey"
-              user={user}
-              component={() => <AdminAddEditProject user={user} />}
-            />
-            <PrivateRoute
-              exact
-              path="/editabout/:fbKey"
-              user={user}
-              component={() => <AdminEditAbout user={user} />}
-            />
-            <PrivateRoute
-              exact
-              path="/edit/contact/:firebaseKey"
-              user={user}
-              component={() => <AdminEditContact user={user} />}
-            />
-            <PrivateRoute
-              exact
-              path="/add-tech"
-              user={user}
-              component={() => <AdminAddTech user={user} />}
-            />
-            <PrivateRoute
-              exact
-              path="/addproject"
-              user={user}
-              component={() => <ProjectCardForm obj={{}} user={user} />}
-            />
-          </Switch>
-        </CSSTransition>
-      </TransitionGroup>
+      <Switch>
+        <PrivateRoute
+          exact
+          path="/edit/project/:projKey"
+          user={user}
+          component={() => <AdminAddEditProject user={user} />}
+        />
+        <PrivateRoute
+          exact
+          path="/editabout/:fbKey"
+          user={user}
+          component={() => <AdminEditAbout user={user} />}
+        />
+        <PrivateRoute
+          exact
+          path="/edit/contact/:firebaseKey"
+          user={user}
+          component={() => <AdminEditContact user={user} />}
+        />
+        <PrivateRoute
+          exact
+          path="/add-tech"
+          user={user}
+          component={() => <AdminAddTech user={user} />}
+        />
+        <PrivateRoute
+          exact
+          path="/addproject"
+          user={user}
+          component={() => <ProjectCardForm obj={{}} user={user} />}
+        />
+      </Switch>
     </>
   );
 }
