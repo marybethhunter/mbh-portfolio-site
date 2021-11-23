@@ -1,8 +1,6 @@
 # Mary Beth Hunter - Personal Bio Site!
 
-## [View Site :)]()
-
-## [Loom video walkthrough!]()
+## [View Site]()
 ## Get Started:
 
 
@@ -21,6 +19,8 @@
 
 #### **Material UI**
 * One of my stretch goals for this project was to implement Material UI for styling, and I did. All non-admin components are from Material UI.
+
+## [Loom video walkthrough!](https://www.loom.com/share/a2527b74d4304866af2f22f9c80805bf)
 
 ## Relevant Links:
 * [Figma Wireframe](https://www.figma.com/file/zCs2S1ZHDjoEUBenp9xCFN/portfolio-site?node-id=0%3A1)
