@@ -35,14 +35,14 @@ export default function ProjectCard({ project, setProjects, user }) {
         className="project-card-div"
       >
         <CardContent>
-          <Typography color="#ffffff" gutterBottom variant="h4" component="div">
+          <Typography color="#ffffff" gutterBottom variant="h5" component="div">
             {project.projectName}
           </Typography>
         </CardContent>
         <CardActions style={{ justifyContent: 'center' }}>
           <Button
             style={{ color: '#ffffff' }}
-            size="small"
+            size="medium"
             href={`/details/${project.firebaseKey}`}
           >
             <DoubleArrowIcon style={{ color: '#ffffff' }} /> Project Details
@@ -50,6 +50,7 @@ export default function ProjectCard({ project, setProjects, user }) {
           {user?.isAdmin && (
             <Button
               style={{ color: '#ffffff' }}
+              size="medium"
               href={`/edit/project/${project.firebaseKey}`}
             >
               Edit Project
@@ -58,6 +59,7 @@ export default function ProjectCard({ project, setProjects, user }) {
           {user?.isAdmin && (
             <Button
               style={{ color: '#ffffff' }}
+              size="medium"
               type="button"
               onClick={() => handleClick('delete')}
             >
